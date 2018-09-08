@@ -19,6 +19,7 @@
 
     <!-- Custom styles for this template-->
     <link href="/static/css/sb-admin.css" rel="stylesheet">
+    <link href="/static/css/userDef.css" rel="stylesheet">
 
   </head>
 
@@ -47,6 +48,28 @@
                 <label for="inputPassword">Password</label>
               </div>
             </div>
+            
+            <div class="form-group">
+
+<!--         The code is for radio buttons to select the student or teacher as user
+
+
+             <center><div class="radiobox">
+                <label>
+                  <input type="radio" name ="radiog" value="Student">
+                   Student
+                </label> &ensp;
+               <label>
+                  <input type="radio" name ="radiog" value="Teacher">
+                   Teacher
+                </label>
+              </div></center>
+            </div>  
+
+
+-->
+
+
             <div class="form-group">
               <div class="checkbox">
                 <label>
@@ -55,12 +78,19 @@
                 </label>
               </div>
             </div>
+
+
+
+
             <a class="btn btn-primary btn-block" href="index.html">Login</a>
           </form>
           <div class="text-center">
-            <a class="d-block small mt-3" href="register.html">Register as Teacher</a>
-            <a class="d-block small" href="register.html">Register as Student</a>
-            <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+
+            <a class="d-block small mt-3" href="/register_as_teacher">Register as Teacher</a>
+          
+            <a class="d-block small" href="/register" style="display: inline"
+            >Register as Student</a>
+            <a class="d-block small" href="/forgot-password">Forgot Password?</a>
           </div>
         </div>
       </div>

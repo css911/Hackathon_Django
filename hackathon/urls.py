@@ -18,8 +18,13 @@ from django.contrib import admin
 from hack import views
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^register/',views.reg),
-    url(r'^log/',views.login),
-    url(r'^forgot-password/',views.rest_password),
+    url(r'^admin/', admin.site.urls),       #url mapping for the django admin page
+    url(r'^register/',views.reg),           #url mapping for the student registration page
+    
+
+    url(r'^log/',views.login),              #url mapping for the login page
+    url(r'^forgot-password/',views.rest_password),          #url mapping for the getting the forgot password page
+
+
+    url(r'^register_as_teacher/',views.regt)         #url mapping for the register as teacher page
 ]
