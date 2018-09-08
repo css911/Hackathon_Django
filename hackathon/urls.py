@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^register/',views.reg),
     url(r'^log/',views.login),
+    url(r'^forgot-password/',views.rest_password),
 ]

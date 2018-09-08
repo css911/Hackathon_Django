@@ -25,11 +25,14 @@ html {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-}
+  
 
 @media (min-width: 1200px) {
   .container {
     max-width: 1500px;
+    
+padding-top: 100px;
+
   }
 }
 
@@ -48,6 +51,7 @@ html {
 @media (min-width: 1200px) {
   .container {
     max-width: 1140px;
+    padding-top: 200px;
   }
 }
 
