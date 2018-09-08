@@ -11,3 +11,6 @@ def reg(request):
 
 def login(request):
 	return render(request,"login.html",{})
+
+def rest_password(request):
+	return render(request,"forgot_password.html",{})
