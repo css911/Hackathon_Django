@@ -26,5 +26,6 @@ urlpatterns = [
     url(r'^forgot-password/',views.rest_password),          #url mapping for the getting the forgot password page
 
 
-    url(r'^register_as_teacher/',views.regt)         #url mapping for the register as teacher page
+    url(r'^register_as_teacher/',views.regt),         #url mapping for the register as teacher page
+    url(r'^student_index/',views.student_index),
 ]
