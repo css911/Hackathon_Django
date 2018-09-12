@@ -24,8 +24,13 @@ urlpatterns = [
 
     url(r'^log/',views.login),              #url mapping for the login page
     url(r'^forgot-password/',views.rest_password),          #url mapping for the getting the forgot password page
-
+    url(r'^logout/', views.logout),
 
     url(r'^register_as_teacher/',views.regt),         #url mapping for the register as teacher page
-    url(r'^student_index/',views.student_index),
+
+    url(r'^student_dashboard/',views.student_dash),             #url mapping for student dash
+
+    url(r'^teacher_dashboard/',views.teacher_dash),             #url mapping for student dash
+
+   
 ]
