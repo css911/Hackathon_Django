@@ -24,4 +24,5 @@ def regt(request):
 	return render(request,"register_as_teacher.html",{})
 
 
-
+def student_index(request):
+	return render(request,"student_index.html",{})
