@@ -14,7 +14,7 @@ import pymsgbox
 @csrf_exempt
 def reg(request):
 	context={}
-	#context["msg"]
+	#c#ontext["msg"]
 	if request.method == "GET":
 		print "Here"
 		return render(request,"register.html",{})
