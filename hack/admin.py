@@ -9,3 +9,7 @@ from models import *
 
 admin.site.register(Teacher)
 admin.site.register(Student)
+admin.site.register(Subject)
+admin.site.register(Attendance_Sheet)
+admin.site.register(Total_No_of_Classes)
+admin.site.register(Info_of_allocation)

@@ -6,5 +6,8 @@ Teacher dashboard
 
 {% block content %}
 
-HI        
+{% for i in classes %}
+{{ i.Year }}&nbsp{{ i.Div }}&nbsp{{ i.Subject }}
+<br>
+{% endfor %}      
 {% endblock %}

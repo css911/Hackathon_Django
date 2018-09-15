@@ -32,5 +32,10 @@ urlpatterns = [
 
     url(r'^teacher_dashboard/',views.teacher_dash),             #url mapping for student dash
 
+    url(r'^authority_dashboard/',views.auth_dash),             #url mapping for Authority
+
+    url(r'^class_allocation/',views.class_alloc),
+
+    url(r'^dash/',views.dash),
    
 ]
