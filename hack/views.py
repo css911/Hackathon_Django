@@ -5,8 +5,10 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render,redirect
 from django.views.decorators.csrf import csrf_exempt
-from models import Teacher,Student
-import pymsgbox
+from models import Teacher,Student,Attendance_Sheet,Subject,Total_No_of_Classes,Info_of_allocation
+from django.shortcuts import render_to_response
+from django.template import RequestContext
+#import pymsgbox
 
 # Create your views here.
 
@@ -14,7 +16,7 @@ import pymsgbox
 @csrf_exempt
 def reg(request):
 	context={}
-	#c#ontext["msg"]
+	#context["msg"]
 	if request.method == "GET":
 		print "Here"
 		return render(request,"register.html",{})
@@ -42,6 +44,9 @@ def reg(request):
 				 Roll_No=roll
 				 	)
 			aaa.save()
+			bbb=Attendance_Sheet(Roll_No=roll,sub1Att="0",sub2Att="0",
+				sub3Att="0",sub4Att="0",sub5Att="0")
+			bbb.save()
 			print "Here2"
 			#print typeuser
 		return redirect('/log/')	
@@ -54,6 +59,8 @@ def login(request):
 		tu = request.session['typeuser']
 		if tu == "student":
 			return redirect('/student_dashboard/')
+		elif tu == "authority":
+			return redirect("/authority_dashboard/")	
 		else:
 			return redirect('/teacher_dashboard/')
 	if request.method == "GET":
@@ -78,14 +85,50 @@ def login(request):
 				request.session["email"] = email
 				request.session["typeuser"] ="teacher"
 				print "logged in "+user_obj.First_Name
+				if user_obj.email == "Authority@gmail.com":
+					request.session["typeuser"]="authority"
+					return redirect('/authority_dashboard/')
 				return redirect('/teacher_dashboard/')		
 			else:
 				print "wrong password"
-				pymsgbox.alert('Wrong Password :(', 'Title')
+				#pymsgbox.alert('Wrong Password :(', 'Title')
 				return redirect('/log/')
 		else:		
 			print "User doesn't exist"
 			return redirect('/log/')
+
+
+@csrf_exempt
+def auth_dash(request):
+	if  "email" not in request.session:
+		return redirect("/log/")
+	elif request.session['typeuser'] != "authority":
+		return redirect("/log/")
+
+	context={}
+	#if request.method == "GET":
+	obj=Teacher.objects.all().exclude(email="Authority@gmail.com")
+	context['teachers']=obj	
+		
+	return render(request,"auth_dash.html",context)		
+		#return render_to_response('auth_dash.html', {},context_instance=RequestContext(request))
+        
+		
+	#else:
+	#	return render(request,"auth_dash.html",context)	
+        
+
+		
+
+
+
+
+
+
+
+	
+
+
 
 
 @csrf_exempt	
@@ -109,12 +152,16 @@ def student_dash(request):
 
 @csrf_exempt
 def teacher_dash(request):
+	context={}
 	if  "email" not in request.session:
 		return redirect("/log/")
 	elif request.session['typeuser'] != "teacher":
 		return redirect("/log/")
 
-	return render(request,"teacher_dashboard.html",{})	
+	email = request.session['email']	
+	obj = 	Info_of_allocation.objects.filter(email=email)	
+	context['classes']=obj
+	return render(request,"teacher_dashboard.html",context)	
 
 
 #method used for returning password resetting page
@@ -158,5 +205,15 @@ def regt(request):
 		return redirect('/log/')	
 
 
+@csrf_exempt
+def class_alloc(request):
+	context={}
+	id=request.GET["teacher_id"]
+	teacher_obj=Teacher.objects.get(id=id)
+	#context['name']=teacher_obj
+	#request.session['teacher_obj']=teacher_obj
+	return render(request,"class_allocation.html",context)
 
-
+@csrf_exempt
+def dash(request):
+	return render(request,"dash.html",{})
