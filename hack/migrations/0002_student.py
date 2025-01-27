@@ -22,6 +22,7 @@ class Migration(migrations.Migration):
                 ('password', models.CharField(max_length=50)),
                 ('Year', models.CharField(max_length=50)),
                 ('Roll_No', models.IntegerField()),
+                
             ],
         ),
     ]
